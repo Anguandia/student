@@ -58,4 +58,18 @@ describe("Students", () => {
             });
         });
     });
+    describe('patch /', function(){
+        var update = {name: 'kuku'};
+        var id = 7;
+        it('update student details', function(done){
+            chai.request(app)
+            .patch(`/${id}`)
+            .send(update)
+            .end(function(err, res){
+                res.status.should.eql(200);
+                res.body.data.name.should.eql('kuku');
+                done();
+            });
+        });
+    });
 });
