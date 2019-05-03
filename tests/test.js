@@ -68,6 +68,7 @@ describe("Students", () => {
             .end(function(err, res){
                 res.status.should.eql(200);
                 res.body.data.name.should.eql('kuku');
+                res.body.data.age.should.eql(88);
                 done();
             });
         });

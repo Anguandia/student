@@ -1,3 +1,4 @@
 /node_modules
 .barbelrc
 package-lock.json
+coverage/
