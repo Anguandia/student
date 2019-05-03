@@ -29,5 +29,15 @@ class StudentController {
             data: student
         });
     }
+    static updateStudent(req, res){
+        var found = students.find(student =>
+            student.id === parseInt(req.params.id, 10)
+        );
+        Object.assign(found, req.body);
+        res.status(200).json({
+            status: 200,
+            data: found
+        });
+    }
 }
 module.exports = StudentController;
