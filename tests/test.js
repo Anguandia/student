@@ -10,7 +10,7 @@ describe("Students", () => {
         // Test to get all students record
         it("should get all students record", (done) => {
              chai.request(app)
-                 .get('/')
+                 .get('/api/v1/')
                  .end((err, res) => {
                      res.should.have.status(200);
                      res.body.should.be.a('object');
@@ -23,7 +23,7 @@ describe("Students", () => {
         it("should get a single student record", (done) => {
              const id = 1;
              chai.request(app)
-                 .get(`/${id}`)
+                 .get(`/api/v1/${id}`)
                  .end((err, res) => {
                      res.should.have.status(200);
                      res.body.should.be.a('object');
@@ -36,7 +36,7 @@ describe("Students", () => {
         it("should not get a single student record", (done) => {
              const id = 5;
              chai.request(app)
-                 .get(`/${id}`)
+                 .get(`/api/v1/${id}`)
                  .end((err, res) => {
                      res.should.have.status(404);
                      done();
@@ -48,7 +48,7 @@ describe("Students", () => {
             it('should create and return the created student object', function(done){
                 var student = {id: 7, name: 'Mike Anguandis', age: 88};
                 chai.request(app)
-                .post('/students')
+                .post('/api/v1/students')
                 .send(student)
                 .end(function(err, res){
                     res.should.have.status(201);
@@ -63,7 +63,7 @@ describe("Students", () => {
         var id = 7;
         it('update student details', function(done){
             chai.request(app)
-            .patch(`/${id}`)
+            .patch(`/api/v1/${id}`)
             .send(update)
             .end(function(err, res){
                 res.status.should.eql(200);
